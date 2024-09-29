@@ -18,6 +18,10 @@ class OrgsRepository(
         }
     }
     suspend fun getDetail(orgName: String,orgDetail:String):DetailOfOrg = withContext(Dispatchers.IO){
-            apiService.getDetail(orgName,orgDetail)
+            try {
+                apiService.getDetail(orgName,orgDetail)
+            }catch (e:Exception){
+                throw e
+            }
     }
 }
